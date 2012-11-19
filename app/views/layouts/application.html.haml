@@ -1,0 +1,20 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title Memories
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    .navbar.navbar-inverse
+      .navbar-inner
+        %a.brand{:href => "#"} Memories
+        %ul.nav
+          %li= render 'posts/form'
+          / <li class="active"><a href="#">Home</a></li>
+          / <li><input type="text"></input></li>
+          / <li><a href="#">Link</a></li>
+        -if current_user
+          =link_to "sign out", "users/sign_out", :method => :delete 
+        =link_to("Sign in ", "/auth/facebook")
+  %body
+    = yield
