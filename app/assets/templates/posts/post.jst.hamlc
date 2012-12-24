@@ -1,0 +1,6 @@
+%ul.thumbnails
+  %li.span2
+    .thumbnail
+      %img{:src=>@post.get("picture")}
+      %h3= @post.get("name")
+      %p= @post.get("description")

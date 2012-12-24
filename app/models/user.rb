@@ -15,21 +15,20 @@ class User < ActiveRecord::Base
   class << self
   	def find_or_create_by_omniauth(omniauth)
   	  authentication = Authentication.find_by_uid_and_provider(omniauth['uid'], omniauth['provider'])	
-      puts "kaka di walla eh ?"
-      puts authentication.inspect
-      puts omniauth.inspect
   	  if authentication.present?
         user = authentication.user
+        authentication.token = omniauth['credentials']['token']
+        authentication.save
   	  	user.update_by_omniauth(omniauth)
   	  	return user
   	  else
   	  	user = User.create({:email => omniauth['info']['email'], :password => "111111", :password_confirmation => "111111" })
-        puts user.inspect
   	  	if user.save
           user.update_by_omniauth(omniauth)
-  	  	  user.authentications.create(:uid => omniauth['uid'], :provider => omniauth['provider'], :token=> omniauth['token'])
+          puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+          puts omniauth['credentials']['token']
+  	  	  user.authentications.create(:uid => omniauth['uid'], :provider => omniauth['provider'], :token=> omniauth['credentials']['token'])
         else
-          puts user.errors.inspect
           return nil
         end
   	  	return user

@@ -1,10 +1,21 @@
 class Memories.Views.Feeds extends Backbone.View
 
   el: "#feeds"
+  events:
+    'keypress .btn' : 'reload'
 
   initialize: ->
-    @render()
+  	@collection = new Memories.Collections.Posts()
+  	@collection.fetch
+  	  success: => 
+        @render()
 
-  render:->
-  	list = new Memories.Views.List()
-  	@$el.append(list.el)
+  render: =>
+  	list = new Memories.Views.PostList(collection: @collection)
+  	$("#lists").append(list.el)
+
+  reload:=>
+  	@collection.fetch
+  	  success: => 
+        @render()
+
