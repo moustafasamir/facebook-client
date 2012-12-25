@@ -1,0 +1,3 @@
+Choose the page you want to add to this list
+-for source in @postSources
+  %a.btn.btn-primary.source{:fb_id => source.fb_id, :name => source.name, :page_type =>source.page_type}= source.name
