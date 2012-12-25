@@ -1,4 +1,4 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+	// This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.fancybox.pack
+//= require jquery-ui-1.9.2.custom.min
 //= require bootstrap
 //= require bootstrap-scrollspy
 //= require bootstrap-modal
@@ -19,12 +21,13 @@
 //= require underscore
 //= require hamlcoffee
 //= require backbone
+//= require js-routes
 //
 //= require memories
 //= require .//memories
+//= require .//views/modal_base
 //= require_tree ../templates/
 //= require_tree .//models
-//= require_tree .//collections
 //= require_tree .//views
 //= require_tree .//routers
 //= require_tree .

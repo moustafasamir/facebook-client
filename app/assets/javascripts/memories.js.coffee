@@ -3,9 +3,14 @@ window.Memories =
   Collections: {}
   Views: {}
   Routers: {}
-  init: -> 
-  	new Memories.Views.Feeds()
-  	
+  Dispatchers:
+    listPagesDispatcher: _.clone(Backbone.Events)
+    postsDispatcher    : _.clone(Backbone.Events)
+  init: =>
+    Memories.current_user = new Memories.Models.CurrentUser()
+    Memories.current_user.fetch
+      success: =>
+        new Memories.Views.Feeds({user: Memories.current_user})
 
 $(document).ready ->
   Memories.init()

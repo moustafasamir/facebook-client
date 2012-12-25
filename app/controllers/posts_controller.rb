@@ -2,12 +2,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-
     # @posts = Post.all
-    puts "**"*20
-    puts session[:facebook].inspect
-    @posts = session[:facebook].get_connections("me", "feed")
-    @posts.inspect
+    @posts = session[:facebook].get_connections("me", "home")
+    # session[:posts] = @posts[0..0]
+    # @posts = session[:posts]
+
 
     respond_to do |format|
       format.html # index.html.erb

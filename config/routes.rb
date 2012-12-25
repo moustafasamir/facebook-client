@@ -2,9 +2,18 @@ Memories::Application.routes.draw do
 
   devise_for :users
 
-  resources :users
-
+  resources :users do
+    resources :lists
+    collection do 
+      get :current
+    end
+  end
+  resources :lists do
+    resources :pages
+  end
+  resources :pages
   resources :posts
+  
 
   root :to => "home#index"
   get "home/index"
