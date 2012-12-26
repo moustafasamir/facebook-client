@@ -1,7 +1,7 @@
 / %ul.thumbnails
-%li.span2.post
-  .thumbnail{:src=>@post.get("id")}
-    %img{:src=>@post.get("picture")}
-    %h3= @post.get("name")
-    %p= @post.get("description")
-    %p= @post.get("message")
+
+.thumbnail{:src=>@post.get("id")}
+  %img{:src=>@post.get("picture")}
+  %h3= @post.get("name")
+  %p= @post.get("description")
+  %p= @post.get("message")
