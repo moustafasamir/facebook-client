@@ -11,7 +11,6 @@ class Memories.Views.List extends Backbone.View
 
     @render()
 
-
   _initDroppable:=>
     @$el.droppable
       hoverClass: "drop-hover"

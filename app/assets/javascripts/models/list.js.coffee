@@ -7,6 +7,9 @@ class Memories.Models.List extends Backbone.Model
 
   url:->
     "users/#{@userId}/lists"
+  
+  get:=>
+    super
 
   addPageToList:(page, listId)=>
     if listId == @.id
