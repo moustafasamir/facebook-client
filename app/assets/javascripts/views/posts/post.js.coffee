@@ -1,6 +1,8 @@
 class Memories.Views.Post extends Backbone.View
 
   template: JST['posts/post']
+  className: "span2 post"
+  tagName:"li"
 
   initialize: =>
     @render()

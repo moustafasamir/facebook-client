@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   has_many :authentications
   has_many :posts
 
+  after_create :create_home_list
+
   class << self
   	def find_or_create_by_omniauth(omniauth)
   	  authentication = Authentication.find_by_uid_and_provider(omniauth['uid'], omniauth['provider'])	
@@ -48,8 +50,6 @@ class User < ActiveRecord::Base
   	  	user = User.create({:email => omniauth['info']['email'], :password => "111111", :password_confirmation => "111111" })
   	  	if user.save
           user.update_by_omniauth(omniauth)
-          puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-          puts omniauth['credentials']['token']
   	  	  user.authentications.create(:uid => omniauth['uid'], :provider => omniauth['provider'], :token=> omniauth['credentials']['token'])
         else
           return nil
@@ -63,5 +63,8 @@ class User < ActiveRecord::Base
     self.avatar_url = omniauth['image'] if omniauth['image'].present?
     self.terms = omniauth['terms'] if omniauth['terms'].present?
     self.email = omniauth['email'] if omniauth['email'].present?
+  end
+  def create_home_list
+    self.lists.create(:name => "Home", :user_id => self.id)
   end
 end

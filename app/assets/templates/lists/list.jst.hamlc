@@ -1,1 +1,2 @@
 %legend= @list.get("name")
+%ul.thumbnails
