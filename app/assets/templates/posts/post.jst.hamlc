@@ -1,7 +1,17 @@
 / %ul.thumbnails
-
 .thumbnail{:src=>@post.get("id")}
+  %p
+    .btn.btn-link.without-decoration{:fb_id => @post.from("id"), :href => "http://www.facebook.com/#{@post.from("id")}", :target=>"_blank"}=@post.from("name")
+    - if @post.originalPage()?
+      %span shared
+      %a.btn.btn-link.without-decoration{:fb_id => @post.originalPage("id"), :href => "http://www.facebook.com/#{@post.originalPage("id")}", :target=>"_blank"}=@post.originalPage("name")
+  %p= @post.get("message")
   %img{:src=>@post.get("picture")}
   %h3= @post.get("name")
   %p= @post.get("description")
-  %p= @post.get("message")
+  %span.actions.hide-it
+    %span.btn-link.without-decoration Like . 
+    %span.btn-link.without-decoration comment . 
+    %span.btn-link.without-decoration Share
+
+
