@@ -6,8 +6,9 @@
       %span shared
       %a.btn.btn-link.without-decoration{:fb_id => @post.originalPage("id"), :href => "http://www.facebook.com/#{@post.originalPage("id")}", :target=>"_blank"}=@post.originalPage("name")
   %p= @post.get("message")
+  %p.muted= @post.get("caption")
   %img{:src=>@post.get("picture")}
-  %h3= @post.get("name")
+  %h3.text-info= @post.get("name")
   %p= @post.get("description")
   %span.actions.hide-it
     %span.btn-link.without-decoration Like . 
