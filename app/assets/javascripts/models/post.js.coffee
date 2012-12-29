@@ -33,6 +33,24 @@ class Memories.Models.Post extends Backbone.Model
         tags.push tag[0] 
     return tags[0]?[attribute]
 
+  postUrl:()=>
+    url = @get("id").replace("_", "/posts/")
+    return "http://www.facebook.com/#{url}"
+  
+  displayDate:()=>
+    monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    createdDate = new Date(@get("created_time"))
+    monthName = monthNames[createdDate.getMonth()]
+    date = createdDate.getDate()
+    return "#{monthName} #{date}"
+
+
+
+
+
+
+
+
 
 
 class Memories.Collections.Posts extends Backbone.Collection
