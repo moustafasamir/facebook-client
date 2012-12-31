@@ -27,7 +27,6 @@ class Memories.Views.List extends Backbone.View
     posts.each (post)=>
       if @model.isPostIncluded(post)
         @$(".thumbnails").append(new Memories.Views.Post(model:post).el)
-
   
   addPageToList:(page, listId)=>
     @model.addPageToList(page, listId)

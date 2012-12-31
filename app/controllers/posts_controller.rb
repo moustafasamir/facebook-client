@@ -25,6 +25,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def fetch_by_fb_id
+    @post = session[:facebook].get_object()
+  end
+
   # GET /posts/new
   # GET /posts/new.json
   def new

@@ -18,5 +18,6 @@ end
 #  updated_at :datetime         not null
 #  user_id    :integer
 #  list_id    :integer
+#  fb_id      :string(255)
 #
 
