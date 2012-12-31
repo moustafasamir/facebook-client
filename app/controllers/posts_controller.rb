@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     # @posts = Post.all
-    @posts = session[:facebook].get_connections("me", "home")
+    @posts = session[:facebook].get_connections("me", "feed")
     # session[:posts] = @posts[0..0]
     # @posts = session[:posts]
 
@@ -23,6 +23,10 @@ class PostsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @post }
     end
+  end
+
+  def fetch_by_fb_id
+    @post = session[:facebook].get_object()
   end
 
   # GET /posts/new

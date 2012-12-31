@@ -5,7 +5,7 @@ class Memories.Views.Feeds extends Backbone.View
     'click .btn' : 'reload'
 
   initialize: (options)->
-    @posts = new Memories.Collections.Posts()
+    @fbPosts = new Memories.Collections.FbPosts()
     @user = options.user
 
     @userLists = new Memories.Collections.UserLists(userId: @user.id)
@@ -22,9 +22,9 @@ class Memories.Views.Feeds extends Backbone.View
     @_initDroppable()
     
   reload: =>
-    @posts.fetch
+    @fbPosts.fetch
       success: =>
-        Memories.Dispatchers.postsDispatcher.trigger "posts:loaded", @posts
+        Memories.Dispatchers.postsDispatcher.trigger "posts:loaded", @fbPosts
 
   _initDroppable:=>
     @$el.droppable

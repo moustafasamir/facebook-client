@@ -15,11 +15,12 @@ class Memories.Views.AddPageToList extends Memories.Views.ModalBase
     @show()
 
   addPage:(e)=>
-    $(e.srcElement).removeClass("btn-primary")
-    $(e.srcElement).attr("disabled", true)
-    fb_id = $(e.srcElement).attr("fb_id")
-    name = $(e.srcElement).attr("name")
-    page_type = $(e.srcElement).attr("page_type")
+    target = e.target
+    $(target).removeClass("btn-primary")
+    $(target).attr("disabled", true)
+    fb_id = $(target).attr("fb_id")
+    name = $(target).attr("name")
+    page_type = $(target).attr("page_type")
     page = new Memories.Models.Page({name: name, fb_id: fb_id, page_type:page_type})
     page.listId = @listId
     page.save

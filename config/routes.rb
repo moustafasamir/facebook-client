@@ -14,6 +14,12 @@ Memories::Application.routes.draw do
   resources :pages
   resources :posts
   
+  resources :facebookModels, only: [] do
+    collection do 
+      get :home
+      get "/:id", action: "show"
+    end
+  end
 
   root :to => "home#index"
   get "home/index"

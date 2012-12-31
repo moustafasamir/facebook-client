@@ -1,7 +1,22 @@
 / %ul.thumbnails
-
 .thumbnail{:src=>@post.get("id")}
-  %img{:src=>@post.get("picture")}
-  %h3= @post.get("name")
-  %p= @post.get("description")
+  %p
+    .btn.btn-link.without-decoration{:fb_id => @post.from("id"), :href => "http://www.facebook.com/#{@post.from("id")}", :target=>"_blank"}=@post.from("name")
+    - if @post.originalPage()?
+      %span shared
+      %a.btn.btn-link.without-decoration{:fb_id => @post.originalPage("id"), :href => "http://www.facebook.com/#{@post.originalPage("id")}", :target=>"_blank"}=@post.originalPage("name")
   %p= @post.get("message")
+  %p.muted= @post.get("caption")
+  %img.picture{:src=>@post.get("picture")}
+  -unless @post.get("name") is "Timeline Photos"
+    %a.without-decoration{:href => @post.postUrl(), :target => "_target"}
+      %h3.text-info= @post.get("name")
+  %p= @post.get("description")
+  %span.actions
+    %span.btn-link.without-decoration Like . 
+    %span.btn-link.without-decoration comment . 
+    %span.btn-link.without-decoration Share
+  %br
+  %a.post-link.btn.btn-link.without-decoration{:href => @post.postUrl(), :target => "_target"}= @post.displayDate()
+
+
