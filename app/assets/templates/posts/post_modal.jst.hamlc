@@ -1,0 +1,8 @@
+%div{:style=>"float:left;width:40%;"}
+  %img{:src => @fbPost.get("source")}
+%div{:style=>"float:right;width:40%;"}
+  %p.muted= @fbPost.get("caption")
+  -unless @fbPost.get("name") is "Timeline Photos"
+    %a.without-decoration{:href => @fbPost.postUrl(), :target => "_target"}
+      %h3.text-info= @fbPost.get("name")
+  %div= @fbPost.get("description")
