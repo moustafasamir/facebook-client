@@ -13,9 +13,11 @@
       %h3.text-info= @post.get("name")
   %p= @post.get("description")
   %span.actions
-    %span.btn-link.without-decoration Like . 
-    %span.btn-link.without-decoration comment . 
-    %span.btn-link.without-decoration Share
+    %span.btn-link.without-decoration.like
+    %span . 
+    %span.btn-link.without-decoration.comment comment
+    %span . 
+    %span.btn-link.without-decoration.share Share
   %br
   %a.post-link.btn.btn-link.without-decoration{:href => @post.postUrl(), :target => "_target"}= @post.displayDate()
 

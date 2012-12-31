@@ -5,8 +5,11 @@ class Memories.Views.Post extends Backbone.View
   tagName:"li"
   events:
     'click .picture': 'imageClicked'
+    'click .like': 'likePressed'
+    'click .share': 'sharePressed'
 
   initialize: =>
+    @model.on "change:liked", @_renderLike
     @render()
 
   render: =>
@@ -14,6 +17,8 @@ class Memories.Views.Post extends Backbone.View
     @_initDrggable()
     @_initHover()
     @$el.data(@model)
+    @_renderLike()
+
 
   _initHover:()=>
     # @$el.hover( 
@@ -37,3 +42,23 @@ class Memories.Views.Post extends Backbone.View
     else
       window.open(@$('.post-link').attr("href"), '_blank');
       window.focus();
+
+  likePressed:=>
+    if @model.get("liked")
+      $.ajax 
+        url: "/facebookModels/like/#{@model.id}"
+        type : "DELETE"
+        success:() =>
+          @model.set("liked", false)
+    else
+      $.post "/facebookModels/like/#{@model.id}", (data)=>
+        if data.success is true
+          @model.set("liked", true)
+
+  sharePressed:=>
+
+  _renderLike:=>
+    if @model.get("liked")
+      @$(".like").text("Unlike")
+    else
+      @$(".like").text("Like")

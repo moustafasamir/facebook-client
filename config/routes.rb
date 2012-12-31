@@ -18,6 +18,8 @@ Memories::Application.routes.draw do
     collection do 
       get :home
       get "/:id", action: "show"
+      post "like/:id", action: :like
+      delete "like/:id", action: :unlike
     end
   end
 
