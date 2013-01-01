@@ -22,6 +22,7 @@ class FacebookModelsController < ApplicationController
     response = {:success => success}
     render json: response
   end
+  
   def unlike
     success = session[:facebook].delete_like(params[:id])
     response = {:success => success}
