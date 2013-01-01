@@ -1,0 +1,4 @@
+%a{:href=>"https://facebook.com/#{@comment.get('from').id}"}
+  %img{:src=>"https://graph.facebook.com/#{@comment.get('from').id}/picture", :width=>'40px'}
+= @comment.get("message")
+%hr

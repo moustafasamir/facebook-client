@@ -13,7 +13,10 @@ class Memories.Views.Post extends Backbone.View
     @$el.html(@template(post: @model))
     @_initDrggable()
     @_initHover()
-    @$el.data(@model)
+    @$el.data(@model)    
+    if @model.get("comments").count > 0
+      @comments = new Memories.Collections.Comments(@model.get("comments").data)
+      @$el.append(new Memories.Views.Comments(collection: @comments).el)
 
   _initHover:()=>
     # @$el.hover( 
