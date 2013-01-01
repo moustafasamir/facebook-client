@@ -40,6 +40,7 @@ gem 'haml'
 gem 'jbuilder'
 #facebook
 gem "koala"
+gem "pry"
 # Use unicorn as the app server
 # gem 'unicorn'
 
