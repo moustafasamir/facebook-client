@@ -323,6 +323,10 @@
   root_path: function(options) {
   return Utils.build_path([], [], [7,"/",false], arguments);
   },
+// share_facebookModels => /facebookModels/share(.:format)
+  share_facebookModels_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"facebookModels",false]],[7,"/",false]],[6,"share",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
 // user => /users/:id(.:format)
   user_path: function(_id, options) {
   return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"users",false]],[7,"/",false]],[3,"id",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);

@@ -1,0 +1,5 @@
+.content
+  %textarea.message{:rows => 3}
+  .btn.btn-primary.share-btn Share
+.alert.alert-success.hide-it Your Post Share successfuly
+.alert.alert-error.hide-it Can't share this post

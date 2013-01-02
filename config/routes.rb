@@ -20,6 +20,7 @@ Memories::Application.routes.draw do
       get "/:id", action: "show"
       post "like/:id", action: :like
       delete "like/:id", action: :unlike
+      post "share", action: :share
     end
   end
 

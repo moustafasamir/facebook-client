@@ -51,6 +51,8 @@ class Memories.Models.FbPost extends Backbone.Model
     date = createdDate.getDate()
     return "#{monthName} #{date}"
 
+  shareLink:=>
+    return @get("link") || @postUrl()
 
 class Memories.Collections.FbPosts extends Backbone.Collection
   model: Memories.Models.FbPost
