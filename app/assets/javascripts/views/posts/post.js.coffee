@@ -21,7 +21,7 @@ class Memories.Views.Post extends Backbone.View
     if @model.get("comments").count > 0
       @comments = new Memories.Collections.Comments(@model.get("comments").data)
       @$el.append(new Memories.Views.Comments(collection: @comments).el)
-
+    @$el.append(new Memories.Views.CommentFormView(post :@model, comments :@comments).el)      
   _initHover:()=>
     # @$el.hover( 
     #   (=> 

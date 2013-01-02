@@ -7,6 +7,5 @@ class Memories.Views.Comment extends Backbone.View
     @render()
 
   render: =>                    
-    @$el.html(@template(comment: @model))
-    @$el.html()
+    @$el.html(@template(comment: @model))    
     return @  
