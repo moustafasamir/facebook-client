@@ -18,6 +18,7 @@
 //= require bootstrap-scrollspy
 //= require bootstrap-modal
 //= require bootstrap-dropdown
+//= require bootstrap-popover
 //= require underscore
 //= require hamlcoffee
 //= require backbone

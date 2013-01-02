@@ -56,6 +56,7 @@ class Memories.Views.Post extends Backbone.View
           @model.set("liked", true)
 
   sharePressed:=>
+    new Memories.Views.SharePopover({model: @model, parentElement: @$(".share")})
 
   _renderLike:=>
     if @model.get("liked")
