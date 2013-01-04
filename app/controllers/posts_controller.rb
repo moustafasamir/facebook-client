@@ -12,30 +12,14 @@ class PostsController < ApplicationController
     end
   end
   
-  def save_later
-    @post = Post.new(params[:post])
-  end
-
   def later
     @posts = current_user.later_posts
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
-  end
-
-  def save_favorite
-    
+    respond_with @posts
   end
 
   def favorite
-    @posts = current_user.later_posts
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
+    @posts = current_user.favorite_posts
+    respond_with @posts
   end
 
   # GET /posts/1
@@ -72,11 +56,14 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
-    User.first.tag(@post, :with => params[:tags].join(', '), :on => :tags)
-    @user_tags = User.first.owned_tags
+    @post = Post.find_by_post_type_and_user_id_and_fb_id(params[:post][:post_type], current_user.id, params[:post][:fb_id])
+    if @post.blank?
+      @post = Post.new(params[:post])
+      @post.user = current_user
+    end
+
     respond_to do |format|
-      if @post.save
+      if @post.persisted? || @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else

@@ -3,11 +3,18 @@ Memories::Application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :lists
     collection do 
       get :current
     end
+    resources :lists
+    resources :posts only:[]do
+      collection do
+        get :later
+        get :favorite
+      end
+    end
   end
+
   resources :lists do
     resources :pages
   end

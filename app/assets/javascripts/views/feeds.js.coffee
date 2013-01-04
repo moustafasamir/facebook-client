@@ -6,7 +6,6 @@ class Memories.Views.Feeds extends Backbone.View
 
   initialize: (options)->
     @fbPosts = new Memories.Collections.FbPosts()
-    # @laterPosts = new Memories.Collections.LaterPosts()
     @user = options.user
 
     @userLists = new Memories.Collections.UserLists(userId: @user.id)
