@@ -15,8 +15,12 @@
  @import "bootstrap";
 
 #feeds{
-  width: 100%;
+  /*width: 100%;*/
+  /*max-width: 100%;*/
+  width: -moz-max-content;
+  max-width: intrinsic;
   height: 100%;
+  padding-right: 36px;
 }
 .list{
   min-height: 400px;
@@ -51,4 +55,10 @@
 }
 .popover-title{
   display: none;
+}
+
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
 }

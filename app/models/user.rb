@@ -32,8 +32,9 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :username
 
   has_many :lists
-  has_many :authentications
-  has_many :posts
+  has_many :authentications  
+  has_many :favorite_posts, class_name: 'Post', conditions: {type: 'favorite'}
+  has_many :later_posts, class_name: 'Post', conditions: {type: 'later'}
 
   after_create :create_home_list
 

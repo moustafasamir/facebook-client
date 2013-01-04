@@ -1,8 +1,15 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :name, :title
-
-  belongs_to :list
+  attr_accessible  :post_id, :type
+  
   belongs_to :user
+   
+  TYPES = ["favorite" , "later"]
+   
+  validates :user_id, presence: true
+  validates :post_id, presence: true
+  validates :type, presence: true
+  validates :type, :inclusion => {:in => Post::TYPES, :message => "type not exist"}
+
 end
 
 # == Schema Information
@@ -10,13 +17,10 @@ end
 # Table name: posts
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  title      :string(255)
-#  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
-#  list_id    :integer
-#  fb_id      :string(255)
+#  post_id    :integer
+#  type       :string(255)
 #
 

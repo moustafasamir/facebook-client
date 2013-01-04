@@ -7,11 +7,11 @@ class Memories.Views.Comments extends Backbone.View
     @collection.on("add", @renderLast)
     @render()
 
-  render: =>                
-    $(@el).html("<hr>")
+  render: =>    
     @collection.each (comment)=>
       $(@el).append(new Memories.Views.Comment(model: comment).el)            
     return @
 
   renderLast: =>
+    console.log @collection.last()
     $(@el).append(new Memories.Views.Comment(model: @collection.last()).el)
