@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   has_many :posts
 
   after_create :create_home_list
+  # after_create :create_facebook_lists
 
   class << self
   	def find_or_create_by_omniauth(omniauth)
@@ -66,5 +67,14 @@ class User < ActiveRecord::Base
   end
   def create_home_list
     self.lists.create(:name => "Home", :user_id => self.id)
+  end
+  def create_facebook_lists
+    token = self.authentications.where(provider: "facebook").first.token
+    facebook = Koala::Facebook::API.new(token)
+    
+    lists = Hash.new { |hash, key| hash[key] = {:pages=>[], :name=>key}}
+    facebook.get_connections("me", "likes").each{|page|lists[page["category"]][:pages] << page}
+    #the following line isn't tested as this function isn't needed for now
+    lists.values.each{|list| self.lists.create(list)}
   end
 end

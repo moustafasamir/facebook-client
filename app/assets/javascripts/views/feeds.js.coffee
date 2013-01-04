@@ -6,6 +6,7 @@ class Memories.Views.Feeds extends Backbone.View
 
   initialize: (options)->
     @fbPosts = new Memories.Collections.FbPosts()
+    # @laterPosts = new Memories.Collections.LaterPosts()
     @user = options.user
 
     @userLists = new Memories.Collections.UserLists(userId: @user.id)
@@ -13,7 +14,6 @@ class Memories.Views.Feeds extends Backbone.View
       success: =>
         @render()
         @reload()
-    
   render: =>
     @userLists.each (list)=>
       @$("#lists").append(new Memories.Views.List
@@ -36,13 +36,14 @@ class Memories.Views.Feeds extends Backbone.View
   
   _createNewList:(post)=>
     listName = prompt("What is the list name");
-    @newList = new Memories.Models.List({name:listName})
-    @newList.userId = @user.id
-    @newList.save {}
-      success:=>
-        @$("#lists").append(new Memories.Views.List
-          model: @newList
-        .el)
-        new Memories.Views.AddPageToList({post: post, listId: @newList.id})
+    if listName?
+      @newList = new Memories.Models.List({name:listName})
+      @newList.userId = @user.id
+      @newList.save {}
+        success:=>
+          @$("#lists").append(new Memories.Views.List
+            model: @newList
+          .el)
+          new Memories.Views.AddPageToList({post: post, listId: @newList.id})
 
 

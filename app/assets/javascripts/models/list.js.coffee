@@ -5,8 +5,11 @@ class Memories.Models.List extends Backbone.Model
     @pages = new Memories.Collections.ListPages(@get("pages"), {listId: @.id})
     Memories.Dispatchers.listPagesDispatcher.on "page:added", @addPageToList
 
-  url:->
-    "users/#{@userId}/lists"
+    @previousAttr = {}
+    @on "change:name", (model, name)=>
+      @previousAttr.name = @previous("name")
+
+  urlRoot: "/lists"
   
   get:=>
     super
