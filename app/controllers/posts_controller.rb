@@ -11,9 +11,31 @@ class PostsController < ApplicationController
       format.json { render json: @posts }
     end
   end
+  
+  def save_later
+    @post = Post.new(params[:post])
+  end
+
   def later
+    @posts = current_user.later_posts
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+    end
+  end
+
+  def save_favorite
     
-    
+  end
+
+  def favorite
+    @posts = current_user.later_posts
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+    end
   end
 
   # GET /posts/1

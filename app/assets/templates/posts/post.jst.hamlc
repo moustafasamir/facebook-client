@@ -18,6 +18,10 @@
     %span.btn-link.without-decoration.comment comment
     %span . 
     %span.btn-link.without-decoration.share Share
+    %span . 
+    %span.btn-link.without-decoration.later Later
+    %span . 
+    %span.btn-link.without-decoration.favorite Favorite
   %br
   %a.post-link.btn.btn-link.without-decoration{:href => @post.postUrl(), :target => "_target"}= @post.displayDate()
 

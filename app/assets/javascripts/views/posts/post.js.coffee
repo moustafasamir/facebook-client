@@ -7,6 +7,8 @@ class Memories.Views.Post extends Backbone.View
     'click .picture': 'imageClicked'
     'click .like': 'likePressed'
     'click .share': 'sharePressed'
+    'click .later': 'laterPressed'
+    'click .favorite': 'favoritePressed'
 
   initialize: =>
     @model.on "change:liked", @_renderLike
@@ -60,8 +62,14 @@ class Memories.Views.Post extends Backbone.View
   sharePressed:=>
     new Memories.Views.SharePopover({model: @model, parentElement: @$(".share")})
 
+  laterPressed:=>
+    
+  favoritePressed:=>
+    
   _renderLike:=>
     if @model.get("liked")
       @$(".like").text("Unlike")
     else
       @$(".like").text("Like")
+
+  
