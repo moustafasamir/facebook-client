@@ -23,6 +23,7 @@
 //= require hamlcoffee
 //= require backbone
 //= require js-routes
+//= require jquery.editable-1.3.3
 //
 //= require memories
 //= require .//memories
@@ -32,3 +33,4 @@
 //= require_tree .//views
 //= require_tree .//routers
 //= require_tree .
+

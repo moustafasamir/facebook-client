@@ -6,12 +6,14 @@ class PostsController < ApplicationController
     @posts = session[:facebook].get_connections("me", "feed")
     # session[:posts] = @posts[0..0]
     # @posts = session[:posts]
-
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
     end
+  end
+  def later
+    
+    
   end
 
   # GET /posts/1

@@ -1,4 +1,4 @@
 %hr
-%a{:href=>"https://facebook.com/#{@comment.get('from').id}"}
+%a{:href=>"https://facebook.com/#{@comment.get('from').id}", :target=>"_blank"}
   %img{:src=>"https://graph.facebook.com/#{@comment.get('from').id}/picture", :style=> "width:40px;"}
 = @comment.get("message")

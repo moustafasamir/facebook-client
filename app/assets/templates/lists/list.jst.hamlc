@@ -1,2 +1,2 @@
-%legend= @list.get("name")
+%legend.list-name= @list.get("name")
 %ul.thumbnails
