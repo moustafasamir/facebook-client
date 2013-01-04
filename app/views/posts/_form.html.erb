@@ -1,15 +1,7 @@
 <%= form_for Post.new,:html =>{:class =>"navbar-form pull-left"}, :remote => true do |f| %>
 
-<!--   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div> -->
   <span class="field">
-    <%= f.text_field :content, :class =>"span7" %>
+    <%= f.text_field :type, :class =>"span7" %>
   </span>
   
   <span class="actions">
