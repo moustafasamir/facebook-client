@@ -5,9 +5,9 @@ class Memories.Views.Feeds extends Backbone.View
     'click .btn' : 'reload'
 
   initialize: (options)->
-    @fbPosts = new Memories.Collections.FbPosts()
+    @fbPosts = new Memories.Collections.FbHomePosts()
     @user = options.user
-
+    @_loadCustomLists()
     @userLists = new Memories.Collections.UserLists(userId: @user.id)
     @userLists.fetch
       success: =>
@@ -15,7 +15,7 @@ class Memories.Views.Feeds extends Backbone.View
         @reload()
   render: =>
     @userLists.each (list)=>
-      @$("#lists").append(new Memories.Views.List
+      @$("#lists").append(new Memories.Views.UserList
         model: list
       .el)
     @_initDroppable()
@@ -40,9 +40,12 @@ class Memories.Views.Feeds extends Backbone.View
       @newList.userId = @user.id
       @newList.save {}
         success:=>
-          @$("#lists").append(new Memories.Views.List
+          @$("#lists").append(new Memories.Views.UserList
             model: @newList
           .el)
           new Memories.Views.AddPageToList({post: post, listId: @newList.id})
+  
+  _loadCustomLists:=>
+    @$("#lists").append(new Memories.Views.CustomList().el)
 
 

@@ -14,13 +14,19 @@ class Memories.Views.Post extends Backbone.View
     @model.on "change:liked", @renderLike
     @model.on "change:later", @renderLater
     @model.on "change:favorite", @renderFavorite
+    @model.on "destroy", @remove
     @render()
+
+  remove:=>
+    super
 
   render: =>
     @$el.html(@template(post: @model))
     @_initDrggable()
     @$el.data(@model)    
-    @renderLike()    
+    @renderLike()
+    @renderLater()
+    @renderFavorite()
     @comments = new Memories.Collections.Comments(@model.get("comments")?.data)
     @$el.append(new Memories.Views.Comments(collection: @comments).el)
     @$el.append(new Memories.Views.CommentFormView(post :@model, comments :@comments).el)      
@@ -56,10 +62,16 @@ class Memories.Views.Post extends Backbone.View
     new Memories.Views.SharePopover({model: @model, parentElement: @$(".share")})
 
   laterPressed:=>
-    @model.save_later()
+    if @model.get("later")
+      Memories.Dispatchers.postsDispatcher.trigger "later:remove" , @model
+    else
+      Memories.Dispatchers.postsDispatcher.trigger "later:add" , @model
 
   favoritePressed:=>
-    @model.favorite()
+    if @model.get("favorite")
+      Memories.Dispatchers.postsDispatcher.trigger "favorite:remove" , @model
+    else
+      Memories.Dispatchers.postsDispatcher.trigger "favorite:added" , @model
     
   renderLike:=>
     if @model.get("liked")
@@ -69,9 +81,10 @@ class Memories.Views.Post extends Backbone.View
 
   renderLater:=>
     if @model.get("later")
-      @_enableButton(@$(".later"), false)
+      @$(".later").text("remove").addClass("muted").attr('disabled', 'disabled').removeClass("btn-link");
     else
-      @_enableButton(@$(".later"), true)
+      @$(".later").text("Later").removeClass("muted").removeAttr('disabled').addClass("btn-link");
+
       
   renderFavorite:=>
     if @model.get("favorite")

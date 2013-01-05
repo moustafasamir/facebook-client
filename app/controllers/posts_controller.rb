@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     # @posts = Post.all
-    @posts = session[:facebook].get_connections("me", "feed")
+    @posts = session[:facebook].get_connections("me", "home")
     # session[:posts] = @posts[0..0]
     # @posts = session[:posts]
     respond_to do |format|

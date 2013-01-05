@@ -239,6 +239,10 @@
   edit_user_registration_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"users",false]],[7,"/",false]],[6,"edit",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
+// favorite_user_posts => /users/:user_id/posts/favorite(.:format)
+  favorite_user_posts_path: function(_user_id, options) {
+  return Utils.build_path(["user_id"], ["format"], [2,[2,[2,[2,[2,[2,[2,[2,[7,"/",false],[6,"users",false]],[7,"/",false]],[3,"user_id",false]],[7,"/",false]],[6,"posts",false]],[7,"/",false]],[6,"favorite",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
 // home_facebookModels => /facebookModels/home(.:format)
   home_facebookModels_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"facebookModels",false]],[7,"/",false]],[6,"home",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
@@ -246,6 +250,10 @@
 // home_index => /home/index(.:format)
   home_index_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"home",false]],[7,"/",false]],[6,"index",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
+// later_user_posts => /users/:user_id/posts/later(.:format)
+  later_user_posts_path: function(_user_id, options) {
+  return Utils.build_path(["user_id"], ["format"], [2,[2,[2,[2,[2,[2,[2,[2,[7,"/",false],[6,"users",false]],[7,"/",false]],[3,"user_id",false]],[7,"/",false]],[6,"posts",false]],[7,"/",false]],[6,"later",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
 // list => /lists/:id(.:format)
   list_path: function(_id, options) {

@@ -7,7 +7,7 @@ Memories::Application.routes.draw do
       get :current
     end
     resources :lists
-    resources :posts only:[]do
+    resources :posts, only:[]do
       collection do
         get :later
         get :favorite

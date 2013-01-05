@@ -54,28 +54,17 @@ class Memories.Models.FbPost extends Backbone.Model
   shareLink:=>
     return @get("link") || @postUrl()
 
-  save_later:=>
-    post = new Memories.Models.Post
-      fb_id: @id
-      type : "later"
-    post.save
-      success:(model)=>
-        Memories.Dispatchers.postsDispatcher.trigger "later:added" , model
-
-  save_later:=>
-    post = new Memories.Models.Post
-    post.save {fb_id: @id, post_type : "later"}
-      success:(model)=>
-        Memories.Dispatchers.postsDispatcher.trigger "later:added" , model
-        @set("later", true)
-
+#move this function from here and implement it like "later"
   favorite:=>
     post = new Memories.Models.Post
     post.save {fb_id: @id, post_type : "favorite"}
       success:(model)=>
-        Memories.Dispatchers.postsDispatcher.trigger "later:added" , model
+        Memories.Dispatchers.postsDispatcher.trigger "favorite:added" , model
         @set("favorite", true)
+
+class Memories.Collections.FbHomePosts extends Backbone.Collection
+  model: Memories.Models.FbPost
+  url: "/facebookModels/home"
 
 class Memories.Collections.FbPosts extends Backbone.Collection
   model: Memories.Models.FbPost
-  url: "/facebookModels/home"
