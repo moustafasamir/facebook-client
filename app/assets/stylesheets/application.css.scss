@@ -23,7 +23,8 @@
   padding-right: 36px;
 }
 .list{
-  min-height: 400px;
+  height: 400px;
+  overflow: scroll;
 }
 .drag-hover{
   -moz-box-shadow: 10px 10px 5px #888;
