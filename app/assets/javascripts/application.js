@@ -25,12 +25,13 @@
 //= require js-routes
 //= require jquery.editable-1.3.3
 //
-//= require memories
 //= require .//memories
 //= require .//views/modal_base
 //= require_tree ../templates/
 //= require_tree .//models
+//= require .//views/lists/list
 //= require_tree .//views
 //= require_tree .//routers
 //= require_tree .
+//= require memories
 

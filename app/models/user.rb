@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
 
   has_many :lists
   has_many :authentications  
-  has_many :favorite_posts, class_name: 'Post', conditions: {type: 'favorite'}
-  has_many :later_posts, class_name: 'Post', conditions: {type: 'later'}
+  has_many :favorite_posts, class_name: 'Post', conditions: {post_type: 'favorite'}
+  has_many :later_posts, class_name: 'Post', conditions: {post_type: 'later'}
 
   after_create :create_home_list
   # after_create :create_facebook_lists

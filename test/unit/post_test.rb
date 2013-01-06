@@ -14,7 +14,7 @@ end
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
-#  post_id    :integer
-#  type       :string(255)
+#  fb_id      :string(255)
+#  post_type  :string(255)
 #
 
