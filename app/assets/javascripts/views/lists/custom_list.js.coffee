@@ -46,9 +46,5 @@ class Memories.Views.CustomList extends Memories.Views.List
       success:(post)=>
         post.fb_post.trigger("destroy")
 
-
-
-
-
   renderPost:(fb_post)=>
-    @$(".thumbnails").append(new Memories.Views.Post(model:fb_post).el)
+    @$(".thumbnails").prepend(new Memories.Views.Post(model:fb_post).el)

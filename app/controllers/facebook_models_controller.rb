@@ -1,7 +1,7 @@
 class FacebookModelsController < ApplicationController
   def home
     # @posts = session[:facebook].get_connections("mohamed.mahmoud59", "feed")
-    @posts = session[:facebook].get_connections("me", "home")
+    @posts = session[:facebook].get_connections("me", "home?sk=h_chr")
     # puts @posts.inspect
     postsIds = ""
     postsIds = @posts.map{ |post| "'#{post["id"]}'"}.join(",")
