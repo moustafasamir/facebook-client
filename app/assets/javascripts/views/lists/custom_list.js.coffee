@@ -10,7 +10,8 @@ class Memories.Views.CustomList extends Memories.Views.List
 
     @render()
     @_fetchPosts()
-
+    super()
+    
   _fetchPosts:=>
     @posts = new Memories.Collections.UserLaterPosts(user_id: Memories.current_user.id)
     @posts.fetch
@@ -24,6 +25,7 @@ class Memories.Views.CustomList extends Memories.Views.List
 
   render:=>
     @$el.html(@template(list: @model))
+    super()
 
   createLaterPost:(original_fb_post)=>
     fb_post = original_fb_post.clone()
