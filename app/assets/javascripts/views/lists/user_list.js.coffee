@@ -10,6 +10,7 @@ class Memories.Views.UserList extends Memories.Views.List
     @model.on "change:name", (model, name)=> 
       @$(".list-name").text(name)
     @render()
+    super()
 
   _initDroppable:=>
     @$el.droppable
@@ -23,6 +24,7 @@ class Memories.Views.UserList extends Memories.Views.List
     @$el.html(@template(list: @model))
     @_initDroppable();
     @_initEditable()
+    super()
 
   listNameEdit:(e)->
     #opts is a variable in editable plugin
